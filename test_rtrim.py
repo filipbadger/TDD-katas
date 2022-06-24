@@ -38,7 +38,7 @@ class TestRtrim:
 
         assert actual == expected
 
-    def test_deletes_signs_from_the_end_of_line_followed_by_unix_newline_sign(self):
+    def test_deletes_single_sign_from_the_end_of_line_when_followed_by_unix_newline_sign(self):
         text = "bcd\t\n"
 
         actual = right_trim(text)
@@ -46,7 +46,7 @@ class TestRtrim:
 
         assert actual == expected
 
-    def test_deletes_signs_from_the_end_of_line_followed_by_windows_newline_sign(self):
+    def test_deletes_single_sign_from_the_end_of_line_when_followed_by_windows_newline_sign(self):
         text = "bcd\t\r\n"
 
         actual = right_trim(text)
