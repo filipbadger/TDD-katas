@@ -45,3 +45,11 @@ class TestRtrim:
         expected = "bcd\n"
 
         assert actual == expected
+
+    def test_deletes_signs_from_the_end_of_line_followed_by_windows_newline_sign(self):
+        text = "bcd\t\r\n"
+
+        actual = right_trim(text)
+        expected = "bcd\r\n"
+
+        assert actual == expected
