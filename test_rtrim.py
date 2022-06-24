@@ -21,3 +21,11 @@ class TestRtrim:
         expected = "bcd"
 
         assert actual == expected
+
+    def test_deletes_space_from_the_end_of_string(self):
+        argument = "bcd "
+
+        actual = right_trim(argument)
+        expected = "bcd"
+
+        assert actual == expected
