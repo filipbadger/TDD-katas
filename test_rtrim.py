@@ -53,3 +53,11 @@ class TestRtrim:
         expected = "bcd\r\n"
 
         assert actual == expected
+
+    def test_deletes_single_sign_from_the_end_of_line_in_the_middle_of_text(self):
+        text = "bcd\t\r\nabc ls \n asd\n"
+
+        actual = right_trim(text)
+        expected = "bcd\r\nabc ls\n asd\n"
+
+        assert actual == expected

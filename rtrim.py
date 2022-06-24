@@ -1,17 +1,29 @@
 def right_trim(text: str):
     # deletes tabs and spaces at the end of each text line
-    chars_to_delete = [' ', '\t']
+    result = ""
+    for index in range(len(text)):
+        if not should_be_skipped(text, index):
+            result += text[index]
+    return result
 
-    if text[-1] in chars_to_delete:
-        return text[:-1]
 
-    elif text[-1] == '\n':
-        if text[-2] in chars_to_delete:
-            endline_sign = '\n'
-            return text[:-2] + endline_sign
+def should_be_skipped(text, index):
+    return text[index] in [' ', '\t'] and is_char_at_the_end_of_line(text, index)
 
-        elif text[-2] == '\r' and text[-3] in chars_to_delete:
-            endline_sign = '\r\n'
-            return text[:-3] + endline_sign
 
-    return text
+def is_char_at_the_end_of_line(text, index):
+    return (is_last_character(text, index) or
+            is_followed_by_unix_end_of_line(text, index) or
+            is_followed_by_windows_end_of_line(text, index))
+
+
+def is_last_character(text, index):
+    return index == len(text) - 1
+
+
+def is_followed_by_unix_end_of_line(text, index):
+    return text[index + 1] == '\n'
+
+
+def is_followed_by_windows_end_of_line(text, index):
+    return text[index + 1] == '\r' and text[index + 2] == '\n'
