@@ -29,3 +29,13 @@ class TestRtrim:
         expected = "bcd"
 
         assert actual == expected
+
+    def test_deletes_tab_from_the_end_of_string(self):
+        argument = "bcd\t"
+
+        actual = right_trim(argument)
+        expected = "bcd"
+
+        assert actual == expected
+
+    def test_
