@@ -55,9 +55,17 @@ class TestRtrim:
         assert actual == expected
 
     def test_deletes_single_sign_from_the_end_of_line_in_the_middle_of_text(self):
-        text = "bcd\t\r\nabc ls \n asd\n"
+        text = "bcd\t\r\nabc ls \n asd\n "
 
         actual = right_trim(text)
         expected = "bcd\r\nabc ls\n asd\n"
+
+        assert actual == expected
+
+    def test_deletes_multiple_signs_from_the_end_of_each_line(self):
+        text = "bcd\t \t\r\nabc ls  \n asd\n\t\t\n  "
+
+        actual = right_trim(text)
+        expected = "bcd\r\nabc ls\n asd\n\n"
 
         assert actual == expected

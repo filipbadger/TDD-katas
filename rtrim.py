@@ -8,7 +8,11 @@ def right_trim(text: str):
 
 
 def should_be_skipped(text, index):
-    return text[index] in [' ', '\t'] and is_char_at_the_end_of_line(text, index)
+    if text[index] in ['\t', ' ']:
+        if is_char_at_the_end_of_line(text, index):
+            return True
+        return should_be_skipped(text, index + 1)
+    return False
 
 
 def is_char_at_the_end_of_line(text, index):
